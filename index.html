@@ -72,7 +72,7 @@
 
     <h1>🎵 Blind Test Live</h1>
     
-    <div id="login-zone">
+    <div id="login-zone" style="display:none;">
         <input type="text" id="pseudo" placeholder="Entre ton pseudo...">
         <button class="btn" style="background: #3498db;" onclick="joinGame()">Rejoindre la partie</button>
     </div>
@@ -81,8 +81,8 @@
         Mon Score : <span id="my-score">0</span> pts
     </div>
 
-    <!-- ZONE HÔTE -->
-    <div id="host-zone">
+    <!-- ZONE HÔTE (visible uniquement avec ?host dans l'URL) -->
+    <div id="host-zone" style="display:none;">
         <input type="text" id="youtube-search" placeholder="Rechercher un titre sur YouTube...">
         <button class="btn" style="background: #9b59b6;" onclick="searchYouTube()">Chercher</button>
         
@@ -119,7 +119,20 @@
 
     <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database-compat.js"></script>
-    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        // Détection du mode hôte
+        const IS_HOST = window.location.search.includes('host');
+        if (IS_HOST) {
+            document.getElementById('host-zone').style.display = 'block';
+            document.title = '🎛️ Hôte — Blind Test';
+            // Charge l'API YouTube uniquement pour l'hôte
+            const tag = document.createElement('script');
+            tag.src = 'https://www.youtube.com/iframe_api';
+            document.head.appendChild(tag);
+        } else {
+            document.getElementById('login-zone').style.display = 'block';
+        }
+    </script>
     <script src="app.js"></script>
     
     <script>

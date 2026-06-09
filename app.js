@@ -29,6 +29,7 @@ let hasBuzzed = false;
 let player;
 
 function onYouTubeIframeAPIReady() {
+    if (!IS_HOST) return;
     player = new YT.Player('player', {
         height: '360',
         width: '640',
@@ -182,7 +183,7 @@ function listenToGame() {
 
         if (data.status === "playing") {
             // --- Vue joueur ---
-            if (playerName) {
+            if (playerName && !IS_HOST) {
                 document.getElementById('player-zone').style.display = 'block';
                 document.getElementById('round-ended-zone').style.display = 'none';
                 // Réactive le buzzer si les buzzes ont été effacés (après mauvaise réponse)
@@ -201,7 +202,7 @@ function listenToGame() {
             }
         } 
         else if (data.status === "results") {
-            if (playerName) {
+            if (playerName && !IS_HOST) {
                 document.getElementById('player-zone').style.display = 'none';
                 document.getElementById('round-ended-zone').style.display = 'block';
                 const feedback = document.getElementById('round-feedback');
@@ -216,7 +217,7 @@ function listenToGame() {
             if (player && typeof player.stopVideo === 'function') player.stopVideo();
         }
         else if (data.status === "waiting") {
-            if (playerName) {
+            if (playerName && !IS_HOST) {
                 document.getElementById('player-zone').style.display = 'none';
                 document.getElementById('round-ended-zone').style.display = 'none';
             }
