@@ -1,5 +1,5 @@
 {
-  "name": "QuizzARLv2",
+  "name": "QuizzARLv3",
   "short_name": "QuizzARL",
   "description": "Buzzer quiz multijoueur en temps réel",
   "start_url": "./index.html",
