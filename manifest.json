@@ -1,11 +1,11 @@
 {
-  "name": "Blind Test Live-v3",
-  "short_name": "BlindTest",
-  "description": "Application de quiz musical en temps réel",
+  "name": "QuizzARL",
+  "short_name": "QuizzARL",
+  "description": "Buzzer quiz multijoueur en temps réel",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#121212",
-  "theme_color": "#3498db",
+  "background_color": "#111118",
+  "theme_color": "#9b59b6",
   "orientation": "portrait",
   "icons": [
     {
